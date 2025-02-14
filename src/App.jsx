@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./index.css";
 
 const initialLists = [
   { name: "Minha lista", tasks: [{ title: "Desenhar Wireframes", status: "A fazer", priority: "Alta" }] },
@@ -80,19 +80,25 @@ export default function App() {
               Adicionar
             </button>
           </div>
+          {!showDeletePopup && (
           <button className="delete-page" onClick={() => setShowDeletePopup(true)}>
             Deletar Lista
           </button>
+          )}
+          {showDeletePopup && (
+        <div className="popup">
+          <p>Deseja deletar mesmo essa lista?</p>
+          <div>
+          <button className="popup-btn-green" onClick={deleteList}>Sim</button>
+          <button className="popup-btn-red" onClick={() => setShowDeletePopup(false)}>Não</button>
+          </div>
+
+        </div>
+      )}
         </div>
       </div>
 
-      {showDeletePopup && (
-        <div className="popup">
-          <p>Deseja deletar mesmo essa lista?</p>
-          <button onClick={deleteList}>Sim</button>
-          <button onClick={() => setShowDeletePopup(false)}>Não</button>
-        </div>
-      )}
+
 
       <div className="filter-task">
         <button className="filter-btn" onClick={() => filterTasks("A fazer")}>
