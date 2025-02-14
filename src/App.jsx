@@ -95,9 +95,21 @@ export default function App() {
               Adicionar
             </button>
           </div>
+          {!showDeletePopup && (
           <button className="delete-page" onClick={() => setShowDeletePopup(true)}>
             Deletar Lista
           </button>
+          )}
+          {showDeletePopup && (
+        <div className="popup">
+          <p>Deseja deletar mesmo essa lista?</p>
+          <div>
+          <button className="popup-btn-green" onClick={deleteList}>Sim</button>
+          <button className="popup-btn-red" onClick={() => setShowDeletePopup(false)}>Não</button>
+          </div>
+
+        </div>
+      )}
         </div>
       </div>
 
