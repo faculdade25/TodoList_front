@@ -1,5 +1,10 @@
-import { useState } from "react";
-import "./App.css";
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import Sidebar from './components/Sidebar'
+
 
 const initialLists = [
   { name: "Minha lista", tasks: [{ title: "Desenhar Wireframes", status: "A fazer", priority: "Alta" }] },
@@ -62,7 +67,17 @@ export default function App() {
     ? selectedList.tasks.filter((task) => task.status === filteredStatus)
     : selectedList.tasks;
 
+    const handleSelectList = (index) => {
+      setSelectedListIndex(index);
+    };
+
   return (
+
+    <div className='principal'>
+ 
+    <Sidebar lists={lists} onSelectList={handleSelectList}/>
+
+
     <div className="container">
       <div className="header">
         <h1>{selectedList.name}</h1>
@@ -85,6 +100,7 @@ export default function App() {
           </button>
         </div>
       </div>
+
 
       {showDeletePopup && (
         <div className="popup">
@@ -157,15 +173,8 @@ export default function App() {
           ))}
         </tbody>
       </table>
+    </div>
 
-      <div className="list-menu">
-        <h2>Listas</h2>
-        {lists.map((list, index) => (
-          <button key={index} onClick={() => setSelectedListIndex(index)}>
-            {list.name}
-          </button>
-        ))}
-      </div>
     </div>
   );
 }
