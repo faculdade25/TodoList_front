@@ -1,5 +1,5 @@
 .sidebar {
-    width: 250px;
+    width: 20%;
     height: 100vh;
     background-color: #f8f8f8;
     display: flex;
@@ -8,7 +8,7 @@
     
   }
   
-  h2 {
+  .header-sidebar {
     font-family: 'Newsreader';
     font-style: normal;
     font-weight: 400;
